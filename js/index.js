@@ -1,5 +1,5 @@
-import data from '../data/index.json' assert { type: 'json' };
-load();
+//import data from '../data/index.json' assert { type: 'json' };
+//load();
 
 function imageExists(image_url){
 
@@ -16,7 +16,12 @@ function imageExists(image_url){
 
 
 
-function load() {
+async function load() {
+	//var listado= data;
+
+	const response = await fetch('../data/index.json');
+	const data = await response.json();
+	//console.log(data);
 	var listado= data;
 
     //console.log(listado[0]);
