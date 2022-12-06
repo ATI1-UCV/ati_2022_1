@@ -43,6 +43,7 @@
 		session_start();
 		
 		$_SESSION["usuario"] = "Ioannis Morakis";
+		echo '<script>console.log("'.$_SESSION["usuario"].'");</script>';
 
 		if(empty($_GET['len'])){
 			//echo "empty key";
@@ -56,24 +57,25 @@
 			$len = $_GET['len'];
 		}
 		setcookie("len", $len);
+		setcookie("usuario", $_SESSION["usuario"]);
 
 
 		//
 		
 
-		if($len == 'es'){
-			$json = file_get_contents('conf/configES.json');
-
-		}
 		if($len == 'en'){
 			$json = file_get_contents('conf/configEN.json');
 			
 
 		}
-		if($len == 'pt'){
+		else  if($len == 'pt'){
 			$json = file_get_contents('conf/configPT.json');
 
 		}
+		else {
+			$json = file_get_contents('conf/configES.json');
+		}
+		
 		
 		echo '<script type="text/JavaScript"> var mydata = '.$json .'; </script>';        
 		echo '<script type="text/JavaScript">  load(mydata); </script>';
@@ -83,17 +85,7 @@
 
 	<body onload="load(); ">
 
-	    <header>
-			<nav>
-				<ul>
-					<li class="logo" id="logo"></li>
-					<li class="saludo" id="saludo"></li>
-					<li class="busqueda">
-						<input type="text" id="search" name="search" value="..." >
-						<input type="button" value="Buscar" onclick="myFunction()" ></li>
-				</ul>	
-			</nav> 
-	    </header>
+		<?php include_once 'pre.php';?>
 		
 	    <section>
 
@@ -101,24 +93,25 @@
 				
 
 
-						<div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
-							<div class="carousel-inner" id="lista"></div>
-							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" ></span>
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-								<span class="carousel-control-next-icon"></span>
-								<span class="visually-hidden">Next</span>
-							</button>
-						</div>
+				<div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+					<div class="carousel-inner" id="lista"></div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" ></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+						<span class="carousel-control-next-icon"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
 
 
 			
 			 
 	    </section>
-	    <footer id="copyRight">
-	    </footer>
+
+		<?php include_once 'post.php';?>
+	    
 
 		<script  src="js/script.js"></script>
 	</body>

@@ -1,14 +1,19 @@
-function load(obj) {
-	var mydata = JSON.parse(perfil);
+async function load(obj) {
+	const response = await fetch('data/24105182/perfil.json');
+	const mydata = await response.json();
+	//console.log(obj);
+	//console.log(mydata);
+
+	//var mydata = JSON.parse(perfil);
 	//var obj = JSON.parse(config);
 	//var mydata = perfil;
 	//var obj = config;
 
 	document.getElementById("logo").innerHTML =  obj.sitio[0]+ '<small>'+ obj.sitio[1]+ '</small> '+ obj.sitio[2];
 	document.getElementById("saludo").innerHTML =  obj.saludo+ ", "+ mydata.nombre;
-	document.getElementById("inicio").innerHTML =  obj.inicio;
+	document.getElementById("inicio").innerHTML =  obj.home;
 	
-	document.getElementById("imagen").src = mydata.imagen;
+	document.getElementById("imagen").src = 'data/24105182/'+ mydata.imagen;
 	document.getElementById("nombre").innerHTML = mydata.nombre;
 	document.getElementById("descripción").innerHTML = mydata.descripción;
 	document.getElementById("color").innerHTML = obj.color+ " " + mydata.color;
