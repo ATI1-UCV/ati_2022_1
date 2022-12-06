@@ -19,7 +19,7 @@ function imageExists(image_url){
 async function load() {
 	//var listado= data;
 
-	const response = await fetch('../data/index.json');
+	const response = await fetch('data/index.json');
 	const data = await response.json();
 	//console.log(data);
 	var listado= data;
