@@ -53,10 +53,18 @@
 
 		
 	?>
+
 	
 
 	<script>
 		var x = <?php echo $x; ?>;
+	</script>
+
+
+	<script>
+		$.ajax({
+			url:"http://localhost/filesPHP/ati_2022_1/getDatos.php"
+		});
 	</script>
 
 	<body onload="load(); ">
