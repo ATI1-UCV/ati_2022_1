@@ -24,7 +24,7 @@
 		
 		
 
-
+		<script type="text/javascript" src="js/perfil.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 
 		<link rel="stylesheet" href="css/style.css"  type="text/css">
@@ -38,6 +38,48 @@
 		<title>ATI[UCV] 2022-1</title>
 	</head>
 
+	<?php
+		//echo '<script>alert("Welcome to Geeks for Geeks")</script>';
+		session_start();
+		
+		$_SESSION["usuario"] = "Ioannis Morakis";
+
+		if(empty($_GET['len'])){
+			//echo "empty key";
+
+			$len = 'es';
+			
+
+		}else{
+			//echo $_GET['key'];
+
+			$len = $_GET['len'];
+		}
+		setcookie("len", $len);
+
+
+		//
+		
+
+		if($len == 'es'){
+			$json = file_get_contents('conf/configES.json');
+
+		}
+		if($len == 'en'){
+			$json = file_get_contents('conf/configEN.json');
+			
+
+		}
+		if($len == 'pt'){
+			$json = file_get_contents('conf/configPT.json');
+
+		}
+		
+		echo '<script type="text/JavaScript"> var mydata = '.$json .'; </script>';        
+		echo '<script type="text/JavaScript">  load(mydata); </script>';
+
+
+	?>
 
 	<body onload="load(); ">
 

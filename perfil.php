@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="perfil.css"  type="text/css">
 		<script type="text/javascript" src="perfil.json"></script>
 		<script type="text/javascript" src="config.json"></script>
-        <script type="text/javascript" src="perfil.js"></script>
+        <script type="text/javascript" src="js/perfil.js"></script>
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<title>Ioannis Morakis</title>
@@ -62,7 +62,17 @@
 	    </footer>
 
 		<?php 
-			if(empty($_GET['len'])){
+			/*if(empty($_GET['len'])){
+				//echo "empty key";
+
+				$len = 'es';
+			}else{
+				//echo $_GET['key'];
+	
+				$len = $_GET['len'];
+			}*/
+
+			if(empty($_COOKIE["len"])){
 				//echo "empty key";
 
 				$len = 'es';
@@ -71,8 +81,9 @@
 	
 				$len = $_GET['len'];
 			}
+			
 
-			$json = file_get_contents('conf/configES.json');
+			//$json = file_get_contents('conf/configES.json');
 
 			if($len == 'es'){
 				$json = file_get_contents('conf/configES.json');
