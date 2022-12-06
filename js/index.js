@@ -21,13 +21,13 @@ async function load() {
 
 	const response = await fetch('data/index.json');
 	const data = await response.json();
-	//console.log(data);
+	console.log(data);
 	var listado= data;
 
     //console.log(listado[0]);
 
-	document.getElementById("logo").innerHTML =  config.sitio[0]+ '<small>'+ config.sitio[1]+ '</small> '+ config.sitio[2];
-	document.getElementById("saludo").innerHTML =  config.saludo+ ", Ioannis Morakis";
+	//document.getElementById("logo").innerHTML =  config.sitio[0]+ '<small>'+ config.sitio[1]+ '</small> '+ config.sitio[2];
+	//document.getElementById("saludo").innerHTML =  config.saludo+ ", Ioannis Morakis";
 
 	//document.getElementById("inicio").innerHTML =  config.inicio;
     //console.log(document.getElementById("lista"));
@@ -96,5 +96,26 @@ function myFunction() {
 	//console.log(document.getElementById("search").value);
 	buscar(document.getElementById("search").value);
 
+
+}
+
+
+async function loadConf(obj, ci, x) {
+
+	var str = 'data/'+ ci +'/perfil.json';
+	const response = await fetch(str);
+	const mydata = await response.json();
+	
+
+	document.getElementById("logo").innerHTML =  obj.sitio[0]+ '<small>'+ obj.sitio[1]+ '</small> '+ obj.sitio[2];
+	document.getElementById("saludo").innerHTML =  obj.saludo+ ", "+ mydata.nombre+ " ("+ x +")";
+	//console.log(document.getElementById("saludo").innerHTML);
+	//document.getElementById("inicio").innerHTML =  obj.home;
+	
+	document.getElementById("copyRight").innerHTML =obj.copyRight;
+
+
+	//copyRight
+	
 
 }

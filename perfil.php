@@ -12,12 +12,24 @@
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 		<title>Ioannis Morakis</title>
 	</head>
+
+	
+
 	<body >
 
 		
 
 
 		<?php include_once 'pre.php';?>
+
+		<?php
+			if(!isset($x)){
+				$x = 1;
+			}else{
+				$x += 1;
+			}
+		?>
+
 	    <section >
 	       
 			<div class="perfil">
@@ -63,12 +75,21 @@
 			}*/
 
 			$len = 'es';
-			if(!empty($_COOKIE["len"])){
+			if(!empty($_GET['len'])){
 				//echo "empty key";
-
+	
 				//echo $_GET['key'];
 	
-				$len = $_COOKIE["len"];
+				$len = $_GET['len'];
+			}
+
+			$ci = '24105182';
+			if(!empty($_GET['ci'])){
+				//echo "empty key";
+	
+				//echo $_GET['key'];
+	
+				$ci = $_GET['ci'];
 			}
 
 			//echo '<script>console.log("'.$len.'");</script>';
@@ -82,7 +103,7 @@
 				
 
 			}
-			else  if($len == 'pt'){
+			else if($len == 'pt'){
 				$json = file_get_contents('conf/configPT.json');
 
 			}
@@ -91,7 +112,8 @@
 			}
 			
 			echo '<script type="text/JavaScript"> var mydata = '.$json .'; </script>';        
-        	echo '<script type="text/JavaScript">  load(mydata); </script>';
+        	echo '<script type="text/JavaScript">  loadConf(mydata,'.$ci.','.$x.'); </script>';
+			echo '<script type="text/JavaScript">  loadperfil(mydata,'.$ci.'); </script>';
 	
 		
 		

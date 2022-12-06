@@ -1,5 +1,6 @@
-async function load(obj) {
-	const response = await fetch('data/24105182/perfil.json');
+async function loadPerfil(obj, ci) {
+	var str = 'data/'+ ci +'/perfil.json';
+	const response = await fetch(str);
 	const mydata = await response.json();
 	//console.log(obj);
 	//console.log(mydata);
@@ -9,11 +10,9 @@ async function load(obj) {
 	//var mydata = perfil;
 	//var obj = config;
 
-	document.getElementById("logo").innerHTML =  obj.sitio[0]+ '<small>'+ obj.sitio[1]+ '</small> '+ obj.sitio[2];
-	document.getElementById("saludo").innerHTML =  obj.saludo+ ", "+ mydata.nombre;
-	document.getElementById("inicio").innerHTML =  obj.home;
 	
-	document.getElementById("imagen").src = 'data/24105182/'+ mydata.imagen;
+	
+	document.getElementById("imagen").src = 'data/'+ci+'/'+ mydata.imagen;
 	document.getElementById("nombre").innerHTML = mydata.nombre;
 	document.getElementById("descripción").innerHTML = mydata.descripción;
 	document.getElementById("color").innerHTML = obj.color+ " " + mydata.color;
@@ -57,11 +56,7 @@ async function load(obj) {
 	document.getElementById("como_comunicarse").insertAdjacentHTML('beforeend', myArray[1]);
 
 
-	document.getElementById("copyRight").innerHTML =obj.copyRight;
 
-
-	//copyRight
-	
 
 }
 

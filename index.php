@@ -43,45 +43,20 @@
 		session_start();
 		
 		$_SESSION["usuario"] = "Ioannis Morakis";
-		echo '<script>console.log("'.$_SESSION["usuario"].'");</script>';
-
-		if(empty($_GET['len'])){
-			//echo "empty key";
-
-			$len = 'es';
-			
-
-		}else{
-			//echo $_GET['key'];
-
-			$len = $_GET['len'];
-		}
-		setcookie("len", $len);
+		//echo '<script>console.log("'.$_SESSION["usuario"].'");</script>';
 		setcookie("usuario", $_SESSION["usuario"]);
 
+		if(!isset($x)){
 
-		//
-		
-
-		if($len == 'en'){
-			$json = file_get_contents('conf/configEN.json');
-			
-
+			$x = 1;
 		}
-		else  if($len == 'pt'){
-			$json = file_get_contents('conf/configPT.json');
 
-		}
-		else {
-			$json = file_get_contents('conf/configES.json');
-		}
 		
-		
-		echo '<script type="text/JavaScript"> var mydata = '.$json .'; </script>';        
-		echo '<script type="text/JavaScript">  load(mydata); </script>';
-
-
 	?>
+
+	<script>
+		var x = <?php echo $x; ?>;
+	</script>
 
 	<body onload="load(); ">
 
@@ -114,6 +89,60 @@
 	    
 
 		<script  src="js/script.js"></script>
+
+		<?php
+			$len = 'es';
+			if(!empty($_GET['len'])){
+				//echo "empty key";
+	
+				//echo $_GET['key'];
+	
+				$len = $_GET['len'];
+			}
+			//echo '<script>console.log("'.$len.'");</script>';
+			setcookie("len", $len);
+			
+			//echo '<script>console.log("'.$_COOKIE["len"].'");</script>';
+			//
+
+			$ci = '24105182';
+			if(!empty($_GET['ci'])){
+				//echo "empty key";
+	
+				//echo $_GET['key'];
+	
+				$ci = $_GET['ci'];
+			}
+			setcookie("ci", $ci);
+
+			
+			
+			
+	
+	
+			if($len == 'en'){
+				$json = file_get_contents('conf/configEN.json');
+				
+	
+			}
+			else if($len == 'pt'){
+				$json = file_get_contents('conf/configPT.json');
+	
+			}
+			else {
+				$json = file_get_contents('conf/configES.json');
+			}
+			
+			//echo '<script>console.log('.$json.');</script>';
+			echo '<script type="text/JavaScript"> var mydata = '.$json .'; </script>'; 
+
+			//echo '<script>console.log(mydata);</script>';    
+
+			echo '<script type="text/JavaScript">  loadConf(mydata,'.$ci.','.$x.'); </script>';
+			
+		?>
+	
+
 	</body>
 
 
