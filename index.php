@@ -24,8 +24,8 @@
 		
 		
 
-		<script type="text/javascript" src="js/perfil.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js1/perfil.js"></script>
+		<script type="text/javascript" src="js1/index.js"></script>
 
 		<link rel="stylesheet" href="css/style.css"  type="text/css">
 		<link rel="stylesheet" href="css/index.css"  type="text/css">
@@ -53,6 +53,7 @@
 
 		
 	?>
+	
 
 	<script>
 		var x = <?php echo $x; ?>;
